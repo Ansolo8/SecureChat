@@ -6,23 +6,24 @@ using System.Security.Cryptography.X509Certificates;
 using System.Net.Security;
 using System.Text;
 using System.Threading.Tasks;
-//using MySql.Data;
-//using MySql.Data.MySqlClient;
 
 class SecureChatServer
 {
-
     static List<SslStream> clients = new List<SslStream>();
 
     static void Main()
     {
         Console.WriteLine("Starting TLS server...");
 
-        X509Certificate2 serverCert = new X509Certificate2("server.pfx", "exportpassword");
+        // Carrega o certificado corretamente
+        X509Certificate2 serverCert = new X509Certificate2("C:/Users/Admin/Documents/chatcertificate.pfx", "securechat");
+
+        // Inicia o servidor na porta 5555
         TcpListener server = new TcpListener(IPAddress.Any, 5555);
         server.Start();
         Console.WriteLine("Server started on port 5555...");
 
+        // Aceitar clientes de forma assíncrona
         while (true)
         {
             TcpClient client = server.AcceptTcpClient();
@@ -33,14 +34,14 @@ class SecureChatServer
     static void HandleClient(TcpClient client, X509Certificate2 serverCert)
     {
         SslStream sslStream = new SslStream(client.GetStream(), false);
-        sslStream.AuthenticateAsServer(serverCert, false, System.Security.Authentication.SslProtocols.Tls12, true);
-
-        lock (clients) { clients.Add(sslStream); }
-
-        Console.WriteLine("Client connected.");
 
         try
         {
+            sslStream.AuthenticateAsServer(serverCert, false, System.Security.Authentication.SslProtocols.Tls12, true);
+            Console.WriteLine("Client connected.");
+
+            lock (clients) { clients.Add(sslStream); }
+
             byte[] buffer = new byte[1024];
             while (true)
             {
@@ -72,7 +73,7 @@ class SecureChatServer
         {
             foreach (var client in clients)
             {
-                if (client != sender)  
+                if (client != sender)
                 {
                     try { client.Write(response, 0, response.Length); }
                     catch { }

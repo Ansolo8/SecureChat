@@ -1,0 +1,15 @@
+C:\Users\Admin\Documents\GitHub\SecureChat\SecureChatServer\obj\Debug\net9.0\securechatserver.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Admin\Documents\GitHub\SecureChat\SecureChatServer\obj\Debug\net9.0\securechatserver.AssemblyInfoInputs.cache
+C:\Users\Admin\Documents\GitHub\SecureChat\SecureChatServer\obj\Debug\net9.0\securechatserver.AssemblyInfo.cs
+C:\Users\Admin\Documents\GitHub\SecureChat\SecureChatServer\obj\Debug\net9.0\securechatserver.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Documents\GitHub\SecureChat\SecureChatServer\obj\Debug\net9.0\securechatserver.sourcelink.json
+C:\Users\Admin\Documents\GitHub\SecureChat\SecureChatServer\bin\Debug\net9.0\securechatserver.exe
+C:\Users\Admin\Documents\GitHub\SecureChat\SecureChatServer\bin\Debug\net9.0\securechatserver.deps.json
+C:\Users\Admin\Documents\GitHub\SecureChat\SecureChatServer\bin\Debug\net9.0\securechatserver.runtimeconfig.json
+C:\Users\Admin\Documents\GitHub\SecureChat\SecureChatServer\bin\Debug\net9.0\securechatserver.dll
+C:\Users\Admin\Documents\GitHub\SecureChat\SecureChatServer\bin\Debug\net9.0\securechatserver.pdb
+C:\Users\Admin\Documents\GitHub\SecureChat\SecureChatServer\obj\Debug\net9.0\securechatserver.dll
+C:\Users\Admin\Documents\GitHub\SecureChat\SecureChatServer\obj\Debug\net9.0\refint\securechatserver.dll
+C:\Users\Admin\Documents\GitHub\SecureChat\SecureChatServer\obj\Debug\net9.0\securechatserver.pdb
+C:\Users\Admin\Documents\GitHub\SecureChat\SecureChatServer\obj\Debug\net9.0\securechatserver.genruntimeconfig.cache
+C:\Users\Admin\Documents\GitHub\SecureChat\SecureChatServer\obj\Debug\net9.0\ref\securechatserver.dll
