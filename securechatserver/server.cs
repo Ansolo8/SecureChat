@@ -16,7 +16,7 @@ class SecureChatServer
         Console.WriteLine("Starting TLS server...");
 
         // Carrega o certificado corretamente
-        X509Certificate2 serverCert = new X509Certificate2("C:/Users/Admin/Documents/chatcertificate.pfx", "securechat");
+        X509Certificate2 serverCert = new X509Certificate2("server.pfx", "securechat");
 
         // Inicia o servidor na porta 5555
         TcpListener server = new TcpListener(IPAddress.Any, 5555);

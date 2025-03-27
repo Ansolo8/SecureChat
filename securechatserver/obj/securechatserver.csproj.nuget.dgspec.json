@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Admin\\Documents\\GitHub\\SecureChat\\SecureChatServer\\securechatserver.csproj": {}
+    "C:\\Users\\Bytestore\\Documents\\GitHub\\SecureChat\\securechatserver\\securechatserver.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Admin\\Documents\\GitHub\\SecureChat\\SecureChatServer\\securechatserver.csproj": {
+    "C:\\Users\\Bytestore\\Documents\\GitHub\\SecureChat\\securechatserver\\securechatserver.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Admin\\Documents\\GitHub\\SecureChat\\SecureChatServer\\securechatserver.csproj",
+        "projectUniqueName": "C:\\Users\\Bytestore\\Documents\\GitHub\\SecureChat\\securechatserver\\securechatserver.csproj",
         "projectName": "securechatserver",
-        "projectPath": "C:\\Users\\Admin\\Documents\\GitHub\\SecureChat\\SecureChatServer\\securechatserver.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Admin\\Documents\\GitHub\\SecureChat\\SecureChatServer\\obj\\",
+        "projectPath": "C:\\Users\\Bytestore\\Documents\\GitHub\\SecureChat\\securechatserver\\securechatserver.csproj",
+        "packagesPath": "C:\\Users\\Bytestore\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Bytestore\\Documents\\GitHub\\SecureChat\\securechatserver\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Bytestore\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
