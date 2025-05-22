@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Admin\\Documents\\GitHub\\SecureChat\\securechatserver\\securechatserver.csproj",
-      "projectName": "securechatserver",
-      "projectPath": "C:\\Users\\Admin\\Documents\\GitHub\\SecureChat\\securechatserver\\securechatserver.csproj",
+      "projectUniqueName": "C:\\Users\\Admin\\Documents\\GitHub\\SecureChat\\SecureChatServer\\SecureChatServer.csproj",
+      "projectName": "SecureChatServer",
+      "projectPath": "C:\\Users\\Admin\\Documents\\GitHub\\SecureChat\\SecureChatServer\\SecureChatServer.csproj",
       "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Admin\\Documents\\GitHub\\SecureChat\\securechatserver\\obj\\",
+      "outputPath": "C:\\Users\\Admin\\Documents\\GitHub\\SecureChat\\SecureChatServer\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config"

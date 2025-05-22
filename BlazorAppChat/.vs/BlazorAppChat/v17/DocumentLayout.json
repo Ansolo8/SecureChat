@@ -1,0 +1,54 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\HP\\Documents\\C_SHARP_REV\\C#_code\\BlazorAppChat\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{01B22E44-AEAC-44D2-8FF6-8246C5FC762C}|BlazorAppChat\\BlazorAppChat.csproj|c:\\users\\hp\\documents\\c_sharp_rev\\c#_code\\blazorappchat\\blazorappchat\\components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{01B22E44-AEAC-44D2-8FF6-8246C5FC762C}|BlazorAppChat\\BlazorAppChat.csproj|solutionrelative:blazorappchat\\components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{01B22E44-AEAC-44D2-8FF6-8246C5FC762C}|BlazorAppChat\\BlazorAppChat.csproj|c:\\users\\hp\\documents\\c_sharp_rev\\c#_code\\blazorappchat\\blazorappchat\\components\\pages\\counter.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{01B22E44-AEAC-44D2-8FF6-8246C5FC762C}|BlazorAppChat\\BlazorAppChat.csproj|solutionrelative:blazorappchat\\components\\pages\\counter.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Home.razor",
+              "DocumentMoniker": "C:\\Users\\HP\\Documents\\C_SHARP_REV\\C#_code\\BlazorAppChat\\BlazorAppChat\\Components\\Pages\\Home.razor",
+              "RelativeDocumentMoniker": "BlazorAppChat\\Components\\Pages\\Home.razor",
+              "ToolTip": "C:\\Users\\HP\\Documents\\C_SHARP_REV\\C#_code\\BlazorAppChat\\BlazorAppChat\\Components\\Pages\\Home.razor",
+              "RelativeToolTip": "BlazorAppChat\\Components\\Pages\\Home.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-22T13:46:44.73Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Counter.razor",
+              "DocumentMoniker": "C:\\Users\\HP\\Documents\\C_SHARP_REV\\C#_code\\BlazorAppChat\\BlazorAppChat\\Components\\Pages\\Counter.razor",
+              "RelativeDocumentMoniker": "BlazorAppChat\\Components\\Pages\\Counter.razor",
+              "ToolTip": "C:\\Users\\HP\\Documents\\C_SHARP_REV\\C#_code\\BlazorAppChat\\BlazorAppChat\\Components\\Pages\\Counter.razor",
+              "RelativeToolTip": "BlazorAppChat\\Components\\Pages\\Counter.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-20T09:21:32.016Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
