@@ -31,7 +31,8 @@
             <button @onclick="DisconnectFromServer" style="background-color: #ef4444; color: white; padding: 5px 10px; border: none; border-radius: 5px;">Disconnect</button>
         </div>
 
-        <div style="height: 400px; overflow-y: scroll; border: 1px solid #ccc; padding: 10px; background: white;">
+        <div id="chatMessages"
+            style="height: 400px; overflow-y: auto; border: 1px solid #ccc; padding: 10px; background: white;">
             @foreach (var message in messages)
             {
                 <p>@message</p>
@@ -128,11 +129,13 @@
             Console.WriteLine($"Sent message: {messageWithUsername}");
             inputMessage = string.Empty;
             await InvokeAsync(StateHasChanged);
+            await JSRuntime.InvokeVoidAsync("scrollToBottom", "chatMessages");
         }
         catch (Exception ex)
         {
             messages.Add($"Error sending message: {ex.Message}");
             await InvokeAsync(StateHasChanged);
+            await JSRuntime.InvokeVoidAsync("scrollToBottom", "chatMessages");
         }
     }
 
@@ -151,6 +154,7 @@
                     Console.WriteLine($"Received message: {message}");
                     messages.Add(message);
                     await InvokeAsync(StateHasChanged);
+                    await JSRuntime.InvokeVoidAsync("scrollToBottom", "chatMessages");
                 }
                 else
                 {
@@ -158,6 +162,7 @@
                     isConnected = false;
                     messages.Add("Disconnected from server.");
                     await InvokeAsync(StateHasChanged);
+                    await JSRuntime.InvokeVoidAsync("scrollToBottom", "chatMessages");
                 }
             }
         }
@@ -170,6 +175,7 @@
                 isReceiving = false;
                 isConnected = false;
                 await InvokeAsync(StateHasChanged);
+                await JSRuntime.InvokeVoidAsync("scrollToBottom", "chatMessages");
             }
         }
     }

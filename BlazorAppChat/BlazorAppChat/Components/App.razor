@@ -16,6 +16,16 @@
 <body>
     <Routes />
     <script src="_framework/blazor.web.js"></script>
+    <script>
+        window.scrollToBottom = function (elementId) {
+            setTimeout(function () {
+                var el = document.getElementById(elementId);
+                if (el && el.lastElementChild) {
+                    el.lastElementChild.scrollIntoView({ behavior: "auto", block: "end" });
+                }
+            }, 50);   
+        };
+    </script>
 </body>
 
 </html>
