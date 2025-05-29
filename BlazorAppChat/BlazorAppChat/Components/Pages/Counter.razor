@@ -39,7 +39,12 @@
         </div>
 
         <div style="margin-top: 10px;">
-            <input type="text" @bind="inputMessage" placeholder="Type your message..." style="width: 300px;" />
+            <input type="text"
+                @bind-value="inputMessage"
+                @bind-value:event="oninput"
+                @onkeydown="HandleKeyPress"
+                placeholder="Type your message..."
+                style="width: 300px;" />
             <button @onclick="SendMessage">Send</button>
         </div>
     }
@@ -166,6 +171,14 @@
                 isConnected = false;
                 await InvokeAsync(StateHasChanged);
             }
+        }
+    }
+
+    private async Task HandleKeyPress(KeyboardEventArgs e)
+    {
+        if (e.Key == "Enter")
+        {
+            await SendMessage();
         }
     }
 
