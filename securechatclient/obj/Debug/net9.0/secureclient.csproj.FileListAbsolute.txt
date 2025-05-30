@@ -1,5 +1,0 @@
-C:\Users\Admin\Documents\GitHub\SecureChat\SecureChatClient\obj\Debug\net9.0\secureclient.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Admin\Documents\GitHub\SecureChat\SecureChatClient\obj\Debug\net9.0\secureclient.AssemblyInfoInputs.cache
-C:\Users\Admin\Documents\GitHub\SecureChat\SecureChatClient\obj\Debug\net9.0\secureclient.AssemblyInfo.cs
-C:\Users\Admin\Documents\GitHub\SecureChat\SecureChatClient\obj\Debug\net9.0\secureclient.csproj.CoreCompileInputs.cache
-C:\Users\Admin\Documents\GitHub\SecureChat\SecureChatClient\obj\Debug\net9.0\secureclient.sourcelink.json

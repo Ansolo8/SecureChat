@@ -1,0 +1,5 @@
+C:\Users\HP\Documents\C_SHARP_REV\C#_code\BlazorAppChat\BlazorAppChat\obj\Release\net9.0\win-x64\PubTmp\Out\appsettings.Development.json
+C:\Users\HP\Documents\C_SHARP_REV\C#_code\BlazorAppChat\BlazorAppChat\obj\Release\net9.0\win-x64\PubTmp\Out\appsettings.json
+C:\Users\HP\Documents\C_SHARP_REV\C#_code\BlazorAppChat\BlazorAppChat\obj\Release\net9.0\win-x64\PubTmp\Out\BlazorAppChat.pdb
+C:\Users\HP\Documents\C_SHARP_REV\C#_code\BlazorAppChat\BlazorAppChat\obj\Release\net9.0\win-x64\PubTmp\Out\aspnetcorev2_inprocess.dll
+C:\Users\HP\Documents\C_SHARP_REV\C#_code\BlazorAppChat\BlazorAppChat\obj\Release\net9.0\win-x64\PubTmp\Out\BlazorAppChat.exe

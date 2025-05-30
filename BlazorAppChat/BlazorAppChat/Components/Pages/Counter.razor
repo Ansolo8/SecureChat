@@ -1,0 +1,232 @@
+﻿@page "/"
+@rendermode InteractiveServer
+@using System.Net.Sockets
+@using System.Net.Security
+@using System.Security.Cryptography.X509Certificates
+@using System.Text
+@inject IJSRuntime JSRuntime
+
+<h3>Secure Chat Client</h3>
+
+<div style="background: linear-gradient(135deg, #1e3a8a, #3b82f6); padding: 20px; border-radius: 10px;">
+   
+    @if (!isConnected)
+    {
+        <button @onclick="ConnectToServer">Connect</button>
+    }
+
+    @if (isLoading)
+    {
+        <p>Connecting to server...</p>
+    }
+
+    @if (!string.IsNullOrEmpty(errorMessage))
+    {
+        <p style="color: red;">@errorMessage</p>
+    }
+
+    @if (isConnected)
+    {
+        <div style="margin-bottom: 10px;">
+            <button @onclick="DisconnectFromServer" style="background-color: #ef4444; color: white; padding: 5px 10px; border: none; border-radius: 5px;">Disconnect</button>
+        </div>
+
+        <div id="chatMessages"
+            style="height: 400px; overflow-y: auto; border: 1px solid #ccc; padding: 10px; background: white;">
+            @foreach (var message in messages)
+            {
+                <p>@message</p>
+            }
+        </div>
+
+        <div style="margin-top: 10px;">
+            <input type="text"
+                @bind-value="inputMessage"
+                @bind-value:event="oninput"
+                @onkeydown="HandleKeyPress"
+                placeholder="Type your message..."
+                style="width: 300px;" />
+            <button @onclick="SendMessage">Send</button>
+        </div>
+    }
+</div>
+
+@code {
+    private List<string> messages = new List<string>();
+    private string inputMessage = string.Empty;
+    private string errorMessage = string.Empty;
+    private bool isLoading = false;
+    private bool isConnected = false;
+    private TcpClient client;
+    private SslStream sslStream;
+    private bool isReceiving = false;
+    private string username = string.Empty;
+
+    private async Task ConnectToServer()
+    {
+        Console.WriteLine($"Connect button clicked at {DateTime.Now:HH:mm:ss}");
+
+        if (isConnected || isLoading) return;
+
+        username = await JSRuntime.InvokeAsync<string>("prompt", "Please enter your username:");
+        if (string.IsNullOrWhiteSpace(username))
+        {
+            errorMessage = "Username cannot be empty.";
+            return;
+        }
+
+        isLoading = true;
+        errorMessage = string.Empty;
+        messages.Clear();
+        await InvokeAsync(StateHasChanged);
+
+        try
+        {
+            Console.WriteLine("Attempting to connect to server...");
+            client = new TcpClient("localhost", 5555);
+            sslStream = new SslStream(client.GetStream(), false, ValidateServerCertificate);
+            await sslStream.AuthenticateAsClientAsync("localhost");
+            if (!sslStream.IsAuthenticated)
+            {
+                throw new Exception("SSL authentication failed.");
+            }
+
+            byte[] usernameBuffer = Encoding.UTF8.GetBytes($"USERNAME:{username}");
+            await sslStream.WriteAsync(usernameBuffer, 0, usernameBuffer.Length);
+            await sslStream.FlushAsync();
+
+            messages.Add($"Connected to server as {username} at {DateTime.Now:HH:mm:ss}");
+            isConnected = true;
+            isLoading = false;
+            Console.WriteLine("Connection successful!");
+            await InvokeAsync(StateHasChanged);
+
+            isReceiving = true;
+            _ = Task.Run(ReceiveMessagesAsync);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Connection failed: {ex.Message}");
+            errorMessage = $"Connection error: {ex.Message}";
+            isLoading = false;
+            isConnected = false;
+            await InvokeAsync(StateHasChanged);
+        }
+    }
+
+    private async Task SendMessage()
+    {
+        if (string.IsNullOrWhiteSpace(inputMessage) || !isConnected)
+            return;
+
+        try
+        {
+            string messageWithUsername = $"{username}: {inputMessage}";
+            messages.Add(messageWithUsername);
+            byte[] buffer = Encoding.UTF8.GetBytes(messageWithUsername);
+            await sslStream.WriteAsync(buffer, 0, buffer.Length);
+            await sslStream.FlushAsync();
+            Console.WriteLine($"Sent message: {messageWithUsername}");
+            inputMessage = string.Empty;
+            await InvokeAsync(StateHasChanged);
+            await JSRuntime.InvokeVoidAsync("scrollToBottom", "chatMessages");
+        }
+        catch (Exception ex)
+        {
+            messages.Add($"Error sending message: {ex.Message}");
+            await InvokeAsync(StateHasChanged);
+            await JSRuntime.InvokeVoidAsync("scrollToBottom", "chatMessages");
+        }
+    }
+
+    private async Task ReceiveMessagesAsync()
+    {
+        try
+        {
+            while (isReceiving && isConnected)
+            {
+                byte[] buffer = new byte[1024];
+                int bytesRead = await sslStream.ReadAsync(buffer, 0, buffer.Length);
+
+                if (bytesRead > 0)
+                {
+                    string message = Encoding.UTF8.GetString(buffer, 0, bytesRead);
+                    Console.WriteLine($"Received message: {message}");
+                    messages.Add(message);
+                    await InvokeAsync(StateHasChanged);
+                    await JSRuntime.InvokeVoidAsync("scrollToBottom", "chatMessages");
+                }
+                else
+                {
+                    isReceiving = false;
+                    isConnected = false;
+                    messages.Add("Disconnected from server.");
+                    await InvokeAsync(StateHasChanged);
+                    await JSRuntime.InvokeVoidAsync("scrollToBottom", "chatMessages");
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            if (isReceiving && isConnected)
+            {
+                Console.WriteLine($"Receive error: {ex.Message}");
+                messages.Add($"Error receiving message: {ex.Message}");
+                isReceiving = false;
+                isConnected = false;
+                await InvokeAsync(StateHasChanged);
+                await JSRuntime.InvokeVoidAsync("scrollToBottom", "chatMessages");
+            }
+        }
+    }
+
+    private async Task HandleKeyPress(KeyboardEventArgs e)
+    {
+        if (e.Key == "Enter")
+        {
+            await SendMessage();
+        }
+    }
+
+    private bool ValidateServerCertificate(object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)
+    {
+        return true;
+    }
+
+    private async Task DisconnectFromServer()
+    {
+        try
+        {
+            isReceiving = false;
+
+            if (sslStream != null)
+            {
+                await sslStream.FlushAsync();
+                sslStream.Close();
+                sslStream.Dispose();
+            }
+
+            if (client != null)
+            {
+                client.Close();
+            }
+
+            isConnected = false;
+            messages.Add("Disconnected from server.");
+            await InvokeAsync(StateHasChanged);
+        }
+        catch (Exception ex)
+        {
+            messages.Add($"Error during disconnect: {ex.Message}");
+            await InvokeAsync(StateHasChanged);
+        }
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        isReceiving = false;
+        isConnected = false;
+        sslStream?.Close();
+        client?.Close();
+    }
+}
